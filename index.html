@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style="color-scheme: light only">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma Jing Ming — Portfolio</title>
+  <!-- Font: Sansation via CDN -->
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
+  <style>
+    /* ========================================
+       CSS Variables & Theme — Light Minimal
+    ======================================== */
+    :root {
+      --color-bg: #ffffff;
+      --color-surface: #ffffff;
+      --color-text: #1a1a1a;
+      --color-text-muted: #6b6b6b;
+      --color-accent: #4a4fe0;
+      --color-accent-hover: #3b3fc4;
+      --color-border: rgba(0, 0, 0, 0.06);
+      --color-shadow: rgba(0, 0, 0, 0.03);
+      --color-shadow-hover: rgba(0, 0, 0, 0.06);
+      --font-display: 'Sansation', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Sansation', 'Helvetica Neue', Arial, sans-serif;
+      --radius: 12px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+
+    /* ========================================
+       Reset & Base
+    ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+
+    /* ========================================
+       Sections — Common
+    ======================================== */
+    section {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 2.5rem);
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    /* ========================================
+       Hero Section
+    ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 3rem);
+      padding-top: 2rem;
+    }
+
+    .hero__left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero__visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__visual img {
+      width: 100%;
+      max-width: 580px;
+      height: auto;
+      display: block;
+    }
+
+    .hero__intro {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: var(--color-text-muted);
+      max-width: 520px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .hero__cta {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ========================================
+       Buttons
+    ======================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition);
+    }
+
+    .btn--primary {
+      background: var(--color-text);
+      color: var(--color-bg);
+    }
+
+    .btn--primary:hover {
+      opacity: 0.8;
+      transform: translateY(-1px);
+    }
+
+    .btn--primary:active {
+      transform: translateY(0);
+      opacity: 0.9;
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn--ghost:hover {
+      border-color: var(--color-text);
+      color: var(--color-text);
+      transform: translateY(-1px);
+    }
+
+    .btn--ghost:active {
+      transform: translateY(0);
+    }
+
+    .btn--hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Sansation', 'Helvetica Neue', Arial, sans-serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #888;
+      text-decoration: none;
+      transition: gap var(--transition), color var(--transition);
+    }
+
+    .btn--hero .arrow {
+      display: inline-block;
+      transition: transform var(--transition);
+    }
+
+    .btn--hero:hover {
+      color: #1a1a1a;
+      gap: 0.65rem;
+    }
+
+    .btn--hero:hover .arrow {
+      transform: translateX(3px);
+    }
+
+
+
+
+    /* ========================================
+       Projects Section Title (smaller)
+    ======================================== */
+    .projects-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    /* ========================================
+       Projects Grid
+    ======================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: clamp(2rem, 4vw, 3rem);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      box-shadow: 0 1px 3px var(--color-shadow);
+      overflow: hidden;
+      padding: 1rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+      font-family: 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px var(--color-shadow-hover);
+    }
+
+    .project-card__thumb {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #f0f1f2;
+    }
+
+    .project-card__thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover .project-card__thumb img {
+      transform: scale(1.03);
+    }
+
+    .project-card__body {
+      padding: 0.85rem 0.15rem 0;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-card__title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      color: var(--color-text);
+    }
+
+    .project-card__title .separator {
+      font-weight: 400;
+      color: var(--color-text-muted);
+      margin: 0 0.25em;
+    }
+
+    .project-card__title .subtitle {
+      font-weight: 400;
+      color: var(--color-text-muted);
+      font-size: 0.92em;
+    }
+
+    .project-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 0.65rem;
+    }
+
+    .project-card__tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.05);
+      color: #555;
+      font-size: 0.72rem;
+      font-weight: 400;
+      line-height: 1.7;
+      white-space: nowrap;
+    }
+
+    .project-card__desc {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .project-card__footer {
+      margin-top: auto;
+      padding-top: 0.9rem;
+    }
+
+    .project-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Sansation', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #888;
+      transition: gap var(--transition), color var(--transition);
+    }
+
+    .project-card__link .arrow {
+      display: inline-block;
+      transition: transform var(--transition);
+    }
+
+    .project-card:hover .project-card__link {
+      color: #1a1a1a;
+      gap: 0.65rem;
+    }
+
+    .project-card:hover .project-card__link .arrow {
+      transform: translateX(3px);
+    }
+
+
+    /* ========================================
+       Animations
+    ======================================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       General — images never overflow
+    ======================================== */
+    img, video, svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* ========================================
+       Responsive — Tablet (768px – 1024px)
+    ======================================== */
+    @media (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    /* ========================================
+       Responsive — Mobile (<768px)
+    ======================================== */
+    @media (max-width: 768px) {
+      section {
+        padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 1.5rem);
+      }
+
+      .hero {
+        min-height: auto;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero__visual {
+        order: -1;
+      }
+
+      .hero__visual img {
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .hero__intro {
+        max-width: 100%;
+      }
+
+      .hero__cta {
+        margin-top: 2rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .btn {
+        padding: 0.85rem 1.6rem;
+        font-size: 0.9rem;
+        min-height: 44px;
+      }
+    }
+
+    /* ========================================
+       Responsive — Small phones (<400px)
+    ======================================== */
+    @media (max-width: 400px) {
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .hero {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .hero__cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+
+
+  <!-- ====== Hero Section ====== -->
+  <section class="hero" id="hero">
+    <div class="hero__left">
+      <h1 class="section-title fade-up" style="--delay: 0">Portfolio</h1>
+      <p class="hero__intro fade-up" style="--delay: 1">Ma Jing Ming</p>
+      <div class="hero__cta fade-up" style="--delay: 2">
+        <a href="#projects" class="btn--hero">Project <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="hero__visual fade-up" style="--delay: 3">
+      <img src="assets/hero.png" alt="灰色乐高积木块与橙色像素点扩散的创意主视觉">
+    </div>
+  </section>
+
+  <!-- ====== Projects Section ====== -->
+  <section id="projects">
+    <h2 class="projects-section-title reveal">PROJECT</h2>
+
+    <div class="projects-grid">
+      <!-- Project 01 -->
+      <a href="project-1.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+        <div class="project-card__thumb">
+          <img src="assets/cover-1.png" alt="店铺装修 Agent 封面" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">店铺装修 Agent<span class="separator">|</span><span class="subtitle">一句话完成装修</span></h3>
+          <div class="project-card__tags">
+            <span class="project-card__tag">Agent交互</span>
+            <span class="project-card__tag">Prompt工程</span>
+            <span class="project-card__tag">AI生图</span>
+          </div>
+          <p class="project-card__desc">将代运营专家工作流抽象为Agent任务链，搭建Prompt Agent扩充素材体系，让不会运营的商家一句话完成整店装修，有效提升采纳率并缩短装修耗时。</p>
+          <div class="project-card__footer">
+            <span class="project-card__link">View Details <span class="arrow">&rarr;</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 02 -->
+      <a href="project-2.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+        <div class="project-card__thumb">
+          <img src="assets/cover-2.png" alt="闪购管家封面" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">闪购管家<span class="separator">|</span><span class="subtitle">更懂商家的 AI 工作台</span></h3>
+          <div class="project-card__tags">
+            <span class="project-card__tag">AI Native 交互</span>
+            <span class="project-card__tag">动态界面</span>
+            <span class="project-card__tag">A2UI</span>
+          </div>
+          <p class="project-card__desc">以动态呈现、动态编排、意图驱动三大理念重新定义商家交互范式，将固定功能工具升级为懂状态、能主动建议的AI工作台，覆盖散店与连锁的差异化经营场景。</p>
+          <div class="project-card__footer">
+            <span class="project-card__link">View Details <span class="arrow">&rarr;</span></span>
+          </div>
+        </div>
+      </a>
+
+     <!-- Project 03 -->
+      <a href="project-3.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+        <div class="project-card__thumb">
+          <img src="assets/cover-3.png" alt="系列图工具封面" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">系列图工具<span class="separator">|</span><span class="subtitle">规模化产出"系列感"商品图</span></h3>
+          <div class="project-card__tags">
+            <span class="project-card__tag">0-1工具建设</span>
+            <span class="project-card__tag">AI-Coding</span>
+            <span class="project-card__tag">用户调研</span>
+          </div>
+          <p class="project-card__desc">将依赖经验的"系列感"拆解为可量化的设计标准，明确人机决策分工，通过GUI+Skill与AI-Coding快速搭建生产工具，帮助代运营规模化产出风格统一的商品图。</p>
+          <div class="project-card__footer">
+            <span class="project-card__link">View Details <span class="arrow">&rarr;</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 04 -->
+      <a href="project-4.html" class="project-card reveal" style="text-decoration:none;color:inherit;">
+        <div class="project-card__thumb">
+          <img src="assets/cover-4.png" alt="店铺装修 Skill 封面" loading="lazy">
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">店铺装修 Skill<span class="separator">|</span><span class="subtitle">多平台多角色 Skill</span></h3>
+          <div class="project-card__tags">
+            <span class="project-card__tag">Skill建设</span>
+            <span class="project-card__tag">Skill交互体验</span>
+            <span class="project-card__tag">一致性</span>
+          </div>
+          <p class="project-card__desc">将成熟店装工具沉淀为可调度的Skill并接入CLI/MCP，构建核心能力与平台场景适配框架，让同一能力灵活适配多平台多角色，支持AI直接理解意图完成装修。</p>
+          <div class="project-card__footer">
+            <span class="project-card__link">View Details <span class="arrow">&rarr;</span></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ====== JavaScript ====== -->
+  <script>
+    (() => {
+      'use strict';
+
+      // ── Hero: staggered fade-in on load ──
+      const fadeElements = document.querySelectorAll('.fade-up');
+
+      const triggerFadeIn = () => {
+        fadeElements.forEach((el, i) => {
+          const delay = parseInt(el.style.getPropertyValue('--delay') || i) * 150;
+          setTimeout(() => el.classList.add('visible'), 200 + delay);
+        });
+      };
+
+      // Run after fonts load for smooth experience
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(triggerFadeIn);
+      } else {
+        window.addEventListener('load', triggerFadeIn);
+      }
+
+      // ── Scroll Reveal: IntersectionObserver ──
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+              const siblingIndex = siblings.indexOf(entry.target);
+              const delay = siblingIndex * 100;
+
+              setTimeout(() => {
+                entry.target.classList.add('revealed');
+              }, delay);
+
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: '0px 0px -60px 0px'
+        }
+      );
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+    })();
+  </script>
+</body>
+</html>
