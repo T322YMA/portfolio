@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闪购管家 — 更懂商家的 AI 工作台</title>
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --color-bg: #EBEEEF;
+      --color-text: #1a1a1a;
+      --color-text-muted: #6b6b6b;
+      --font-display: 'Sansation', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Sansation', 'Helvetica Neue', Arial, sans-serif;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(235, 238, 239, 0.82);
+      backdrop-filter: blur(18px) saturate(1.6);
+      -webkit-backdrop-filter: blur(18px) saturate(1.6);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 1rem clamp(1.25rem, 5vw, 2.5rem);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .back-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .back-link:hover { color: var(--color-text); }
+    .divider { width: 1px; height: 1.2rem; background: rgba(0,0,0,0.12); flex-shrink: 0; }
+    .header-info { display: flex; align-items: baseline; gap: 0.6rem; min-width: 0; }
+    .header-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; white-space: nowrap; }
+    .header-subtitle { font-size: 0.78rem; color: var(--color-text-muted); font-weight: 300; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) clamp(3rem, 6vw, 5rem);
+    }
+    .content img {
+      width: 100%; max-width: 1200px; height: auto;
+      display: block; margin: 0 auto; border-radius: 6px;
+    }
+    .content img + img { margin-top: clamp(0.75rem, 1.5vw, 1.25rem); }
+    .bottom-cta { text-align: center; padding: 2.5rem 1rem 4rem; }
+    .bottom-cta a {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.75rem 1.6rem; border-radius: 999px;
+      font-size: 0.85rem; font-weight: 500; font-family: var(--font-body);
+      color: var(--color-text); background: transparent;
+      border: 1px solid rgba(0,0,0,0.12); text-decoration: none;
+      transition: all var(--transition);
+    }
+    .bottom-cta a:hover { border-color: var(--color-text); transform: translateY(-1px); }
+    .img-reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .img-reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px) {
+      .top-bar { padding: 0.85rem 1rem; gap: 1rem; }
+      .header-subtitle { display: none; }
+      .content { padding: 1rem 0.75rem 3rem; }
+      .content img { border-radius: 4px; }
+    }
+    @media (max-width: 400px) {
+      .top-bar { gap: 0.75rem; }
+      .header-title { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <a href="index.html" class="back-link">← Back</a>
+    <span class="divider"></span>
+    <div class="header-info">
+      <span class="header-title">闪购管家</span>
+      <span class="header-subtitle">更懂商家的 AI 工作台</span>
+    </div>
+  </header>
+  <main class="content">
+    <img class="img-reveal" src="assets/projects/2-1.png" alt="闪购管家 - 封面" loading="lazy">
+    <img class="img-reveal" src="assets/projects/2-2.png" alt="闪购管家 - 详情 2" loading="lazy">
+    <img class="img-reveal" src="assets/projects/2-3.png" alt="闪购管家 - 详情 3" loading="lazy">
+    <img class="img-reveal" src="assets/projects/2-4.png" alt="闪购管家 - 详情 4" loading="lazy">
+    <img class="img-reveal" src="assets/projects/2-5.png" alt="闪购管家 - 详情 5" loading="lazy">
+    <img class="img-reveal" src="assets/projects/2-6.png" alt="闪购管家 - 详情 6" loading="lazy">
+    <img class="img-reveal" src="assets/projects/2-7.png" alt="闪购管家 - 详情 7" loading="lazy">
+  </main>
+  <div class="bottom-cta">
+    <a href="index.html">← Back to Portfolio</a>
+  </div>
+  <script>
+    (() => {
+      const imgs = document.querySelectorAll('.img-reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      imgs.forEach(img => observer.observe(img));
+    })();
+  </script>
+</body>
+</html>
