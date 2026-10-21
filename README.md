@@ -14,7 +14,7 @@ portfolio/
 ├── assets/
 │   ├── hero.png        # 首页主图
 │   ├── cover-1~4.png   # 四个项目卡片封面图
-│   └── projects/       # 各项目详情页配图（X-Y.png）
+│   └── projects/       # 各项目详情页配图（X-Y.jpg）
 └── README.md
 ```
 
